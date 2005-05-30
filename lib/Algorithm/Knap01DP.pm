@@ -5,7 +5,7 @@ use warnings;
 use Carp;
 use IO::File;
 
-our $VERSION = '0.20'; #OOP
+our $VERSION = '0.25'; 
 # Still a very early "alpha" version
 
 sub new {
@@ -199,12 +199,11 @@ Algorithm::Knap01DP - Solves the 0-1 Knapsack problem using the Dynamic Programm
   $knap->solutions(); # computes all the solutions
   $knap->ShowResults(); # shows all the solutions
 
-  my @f = KnapP01DP($M, $w, $p);
-
 =head1 DESCRIPTION
 
 Solves the 0-1 Knapsack problem using the Dynamic Programming Technique.
 See an example of problem format
+
     $ cat knapanderson.dat
     6   # number of objects
     30  # capacity
@@ -225,6 +224,7 @@ This corresponds to a problem with N=6, M=30 (objects, capacity)
 then the following consecutive pair of lines hold the weight and
 profit (in that order) of the different objects.
 A program illustrating the use of the module follows:
+
     $ cat -n example.pl
     1  use strict;
     2  use Algorithm::Knap01DP;
@@ -243,6 +243,10 @@ The output is:
     0 (14)  2 (2)   3 (11)  4 (3)   Used Capacity = 30
     0 (14)  1 (5)   3 (11)  Used Capacity = 30
     Profit = 30
+
+The algorithm has complexity order M x N, being M the capacity and N the number
+of objects. Since M is usually much smaller than 2^N, the algorithm 
+gives a efficient way to find all the solutions.
 
 =head2 EXPORT
 
